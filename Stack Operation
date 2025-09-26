@@ -1,0 +1,66 @@
+public class Main {
+
+    // Node class inside Main (non-public)
+    static class Node {
+        int data;
+        Node next;
+    }
+
+    // Stack class inside Main (non-public)
+    static class Stack {
+        Node top = null;
+
+        void push(int num) {
+            Node newNode = new Node();
+            newNode.data = num;
+            newNode.next = top;
+            top = newNode;
+            System.out.println(num + " pushed to stack.");
+        }
+
+        void pop() {
+            if (top == null) {
+                System.out.println("Stack Underflow. Nothing to pop.");
+            } else {
+                System.out.println(top.data + " popped from stack.");
+                top = top.next;
+            }
+        }
+
+        void seek() {
+            if (top == null) {
+                System.out.println("Stack is empty.");
+            } else {
+                System.out.println("Top element is: " + top.data);
+            }
+        }
+
+        void display() {
+            if (top == null) {
+                System.out.println("Stack is empty.");
+            } else {
+                System.out.print("Stack elements: ");
+                Node temp = top;
+                while (temp != null) {
+                    System.out.print(temp.data + " ");
+                    temp = temp.next;
+                }
+                System.out.println();
+            }
+        }
+    }
+
+    // main method
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        stack.display();
+        stack.seek();
+        stack.pop();
+        stack.display();
+    }
+}
